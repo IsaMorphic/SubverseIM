@@ -246,8 +246,7 @@ namespace SubverseIM.Services.Implementation
                 File.Move(cacheFilePath, destFilePath, true);
 
                 manager = await engine.AddAsync(metadata, destDirPath,
-                    new TorrentSettingsBuilder { AllowInitialSeeding = true }
-                    .ToSettings());
+                    new TorrentSettings { AllowInitialSeeding = true });
             }
             catch (TorrentException)
             {
