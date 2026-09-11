@@ -135,7 +135,7 @@ namespace SubverseIM.ViewModels.Components
 
             ILauncherService launcherService = await parent.ServiceManager.GetWithAwaitAsync<ILauncherService>();
             string cacheDirPath = Path.Combine(
-                        launcherService.GetPersistentStoragePath(), "torrent", "files", 
+                        launcherService.GetApplicationStoragePath(), "torrent", "files", 
                         innerTorrent.InfoHash.ToHex()
                         );
             string cacheFilePath = Path.Combine(cacheDirPath,
@@ -182,7 +182,7 @@ namespace SubverseIM.ViewModels.Components
             }
 
             string exportDirPath = Path.Combine(
-                launcherService.GetPersistentStoragePath(), "torrent", "exported"
+                launcherService.GetApplicationStoragePath(), "torrent", "exported"
                 );
             Directory.CreateDirectory(exportDirPath);
 

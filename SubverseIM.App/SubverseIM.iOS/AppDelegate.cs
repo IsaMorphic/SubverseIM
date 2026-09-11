@@ -175,7 +175,7 @@ public partial class AppDelegate : AvaloniaAppDelegate<App>, ILauncherService
 
         serviceManager.GetOrRegister<IEncryptionService>(new DefaultEncryptionService());
 
-        string appDataPath = GetPersistentStoragePath();
+        string appDataPath = GetApplicationStoragePath();
         Directory.CreateDirectory(appDataPath);
 
         string dbFilePath = Path.Combine(appDataPath, "SubverseIM.db");
@@ -213,7 +213,7 @@ public partial class AppDelegate : AvaloniaAppDelegate<App>, ILauncherService
         return launchedUri;
     }
 
-    public string GetPersistentStoragePath()
+    public string GetApplicationStoragePath()
     {
         return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
     }

@@ -609,7 +609,7 @@ namespace SubverseIM.Services.Implementation
                     portForwarderTcs.SetResult(portForwarder);
                     return portForwarder;
                 });
-            string cacheDirPath = Path.Combine(launcherService.GetPersistentStoragePath(), "torrent");
+            string cacheDirPath = Path.Combine(launcherService.GetApplicationStoragePath(), "torrent");
             serviceManager.GetOrRegister<ITorrentService>(
                 new TorrentService(serviceManager, new EngineSettings
                 {

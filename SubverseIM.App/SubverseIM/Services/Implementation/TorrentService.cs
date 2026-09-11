@@ -131,7 +131,7 @@ namespace SubverseIM.Services.Implementation
             MagnetLink.TryParse(torrent.MagnetUri, out MagnetLink? magnetLink);
 
             string destDirPath = Path.Combine(
-                launcherService.GetPersistentStoragePath(), "torrent", "files", infoHash.ToHex()
+                launcherService.GetApplicationStoragePath(), "torrent", "files", infoHash.ToHex()
                 );
             Directory.CreateDirectory(destDirPath);
 
@@ -203,7 +203,7 @@ namespace SubverseIM.Services.Implementation
             IFrontendService frontendService = await serviceManager.GetWithAwaitAsync<IFrontendService>();
             ILauncherService launcherService = await serviceManager.GetWithAwaitAsync<ILauncherService>();
 
-            string cacheDirPath = Path.Combine(launcherService.GetPersistentStoragePath(), "torrent", "staging");
+            string cacheDirPath = Path.Combine(launcherService.GetApplicationStoragePath(), "torrent", "staging");
             Directory.CreateDirectory(cacheDirPath);
 
             string cacheFilePath = Path.Combine(cacheDirPath, file.Name);
@@ -238,7 +238,7 @@ namespace SubverseIM.Services.Implementation
             TorrentManager manager;
             try
             {
-                string destDirPath = Path.Combine(launcherService.GetPersistentStoragePath(),
+                string destDirPath = Path.Combine(launcherService.GetApplicationStoragePath(),
                     "torrent", "files", metadata.InfoHashes.V1OrV2.ToHex());
                 Directory.CreateDirectory(destDirPath);
 

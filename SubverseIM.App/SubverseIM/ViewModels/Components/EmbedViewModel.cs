@@ -65,7 +65,7 @@ namespace SubverseIM.ViewModels.Components
 
                 ILauncherService launcherService = await serviceManager.GetWithAwaitAsync<ILauncherService>();
                 string cacheDirPath = Path.Combine(
-                        launcherService.GetPersistentStoragePath(), "torrent", "files",
+                        launcherService.GetApplicationStoragePath(), "torrent", "files",
                         magnetLink.InfoHashes.V1OrV2.ToHex()
                         );
                 string cacheFilePath = Path.Combine(cacheDirPath,
