@@ -119,7 +119,7 @@ public class MainActivity : AvaloniaMainActivity, ILauncherService
                 break;
         }
 
-        string appDataPath = GetPersistentStoragePath();
+        string appDataPath = GetApplicationStoragePath();
         Directory.CreateDirectory(appDataPath);
 
         string dbFilePath = Path.Combine(appDataPath, "SubverseIM.db");
@@ -231,14 +231,9 @@ public class MainActivity : AvaloniaMainActivity, ILauncherService
             null : new Uri(Intent.DataString);
     }
 
-    public string GetPersistentStoragePath()
+    public string GetApplicationStoragePath()
     {
-        return Build.Product?.ToLowerInvariant() switch
-        {
-            "gryphon" => null,
-            _ => GetExternalFilesDir(null)?.AbsolutePath
-        } ?? System.Environment.GetFolderPath(System.Environment
-        .SpecialFolder.ApplicationData);
+        return System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData);
     }
 
     public Task<bool> ShowConfirmationDialogAsync(string title, string message)

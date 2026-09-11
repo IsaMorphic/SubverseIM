@@ -197,7 +197,14 @@ namespace SubverseIM.Android
                 .Build();
             biometricPrompt.Authenticate(promptInfo);
 
-            return await authenticationCallback.GetResultAsync(cancellationToken);
+            try
+            {
+                return await authenticationCallback.GetResultAsync(cancellationToken);
+            }
+            catch (AuthenticationResultException ex) when (ex is { ErrorCode: BiometricPrompt.ErrorNoBiometrics or BiometricPrompt.ErrorNoDeviceCredential }) 
+            {
+                return null;
+            }
         }
     }
 }
